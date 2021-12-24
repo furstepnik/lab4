@@ -3,6 +3,8 @@ package bmstu;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 
+import javax.script.ScriptException;
+
 public class Tester extends AbstractActor {
     private ActorRef storeActor;
     private final String JS = "nashorn";
@@ -10,5 +12,7 @@ public class Tester extends AbstractActor {
         this.storeActor = ac;
     }
 
-    
+    private String runTest(Test test) throws ScriptException, NoSuchMethodException {
+        
+    }
 }
