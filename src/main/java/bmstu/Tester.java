@@ -6,6 +6,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.ScriptException;
+import javax.script.Invocable;
 
 public class Tester extends AbstractActor {
     private ActorRef storeActor;
@@ -19,5 +20,6 @@ public class Tester extends AbstractActor {
         TestMessage parent = test.getTest();
         engine.eval(parent.getScript());
         Invocable invoc = (Invocable) engine;
+        
     }
 }
