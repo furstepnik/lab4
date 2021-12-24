@@ -1,5 +1,6 @@
 package bmstu;
 
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
@@ -15,5 +16,21 @@ public class Router {
     public Router(ActorSystem system) {
         actor = system.actorOf(Props.create(Store.class));
         pool = system.actorOf(new RoundRobinPool(WORK_NUMBER).props(Props.create(TesterActor.class, storeActor)));
+    }
+
+    private void runTests(TestMessage test) {
+        for (Test t : test.getTests()) {
+            t.setParentTest(test);
+            pool.tell(t, ActorRef.noSender());
+        }
+    }
+
+    @Override
+    public Receive createRecieve() {
+        return ReceiveBuilder
+                .create()
+                .match(TestMessage.class, msg -> runTests(msg))
+                .match(String.class, msg -> storeActor.forward(msg, getContex()))
+                .build();
     }
 }
