@@ -24,6 +24,8 @@ public class Store {
 
     private Map<String, String> prepareRes(String testId) {
         Map<String,String> mapTestsResult = new HashMap<>();
-        
+        if (this.store.containsKey(testId)) {
+            
+        }
     }
 }
