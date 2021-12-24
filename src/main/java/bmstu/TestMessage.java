@@ -33,6 +33,10 @@ public class TestMessage implements Serializable{
         return this.packageId;
     }
 
+    public String getScript() {
+        return this.script;
+    }
+
     
 
 
