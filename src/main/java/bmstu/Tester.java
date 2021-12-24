@@ -2,6 +2,8 @@ package bmstu;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.japi.pf.ReceiveBuilder;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -27,6 +29,15 @@ public class Tester extends AbstractActor {
         try {
             String getRes = runTest(test);
             test.setActualResult(getRes);
-        } catch ()
+        } catch (Exception excep) {
+            test.setActualResult(excep.toString());
+        }
+        return test;
+    }
+
+    @Override
+    public Receive createReceive() {
+        return ReceiveBuilder
+                
     }
 }
