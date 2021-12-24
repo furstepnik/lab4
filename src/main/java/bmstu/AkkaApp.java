@@ -9,6 +9,7 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.routing.Router;
 import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
 
 public class AkkaApp {
     private static final String HOST = "localhost";
@@ -18,6 +19,6 @@ public class AkkaApp {
         ActorRef rout = system.actorOf(Props.create(Router.class, system));
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> flow = new RoterDefine(rout).createRoute().flow
+        final Flow<HttpRequest, HttpResponse, NotUsed> flow = new RoterDefine(rout).createRoute().flow(system, materializer);
     }
 }
