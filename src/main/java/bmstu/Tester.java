@@ -20,6 +20,10 @@ public class Tester extends AbstractActor {
         TestMessage parent = test.getTest();
         engine.eval(parent.getScript());
         Invocable invoc = (Invocable) engine;
+        return invoc.invokeFunction(parent.getNameFunction(), test.getParameters()).toString();
+    }
+
+    private Test checkResult(Test test) {
         
     }
 }
