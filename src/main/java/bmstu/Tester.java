@@ -24,6 +24,9 @@ public class Tester extends AbstractActor {
     }
 
     private Test checkResult(Test test) {
-        
+        try {
+            String getRes = runTest(test);
+            test.setActualResult(getRes);
+        } catch ()
     }
 }
