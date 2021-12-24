@@ -21,4 +21,6 @@ public class Store {
             this.store.put(testId, arrayTests);
         }
     }
+
+    private Map<>
 }
