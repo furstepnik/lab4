@@ -27,5 +27,9 @@ public class TestMessage {
         this.script = sc;
     }
 
+    public String getPackageId() {
+        return this.packageId;
+    }
+
     
 }
