@@ -25,7 +25,12 @@ public class Store {
     private Map<String, String> prepareRes(String testId) {
         Map<String,String> mapTestsResult = new HashMap<>();
         if (this.store.containsKey(testId)) {
-            
+            for (Test test : this.store.get(testId)) {
+                if (test.getActualResult().equals(test.getExpectedResult())) {
+                    mapTestResult.put(test.getTestName(), SUCCESS);
+                } else {
+                    
+                }
         }
     }
 }
