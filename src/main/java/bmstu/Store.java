@@ -2,7 +2,9 @@ package bmstu;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Store {
 
@@ -11,12 +13,12 @@ public class Store {
     private static final Strinc SUCCESS = "SUCCESS";
     private void putTest(Test test) {
         String testId = test.getTest().getPackageId();
-        if (this.store.containsKey(pId)) {
-            this.store.get(pId).add(test);
+        if (this.store.containsKey(testId)) {
+            this.store.get(testId).add(test);
         } else {
             ArrayList<Test> arrayTests = new ArrayList<>();
             arrayTests.add(test);
-            this.store.put(pId, arrayTests);
+            this.store.put(testId, arrayTests);
         }
     }
 }
