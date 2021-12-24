@@ -7,6 +7,10 @@ public class Store {
     private static final Strinc SUCCESS = "SUCCESS";
     private void putTest(Test test) {
         String testId = test.getTest().getPackageId();
-        
+        if (this.store.containsKey(pId)) {
+            this.store.get(pId).add(test);
+        } else {
+            
+        }
     }
 }
