@@ -41,7 +41,7 @@ public class TestMessage implements Serializable{
         return this.nameFunction;
     }
 
-    
-
-
+    public List<Test> getTests() {
+        return this.tests;
+    }
 }
