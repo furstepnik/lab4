@@ -41,6 +41,7 @@ public class Store extends AbstractActor{
         return ReceiveBuilder
                 .create()
                 .match(Test.class, t -> putTest(t))
+                .match(String.class, id -> sender().tell(prepareRes(id), self()))
                 
     }
 }
