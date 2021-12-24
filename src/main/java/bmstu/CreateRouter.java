@@ -13,6 +13,10 @@ public class CreateRouter extends AllDirectives{
     private final String NAME = "packageId";
     private final int TIME_OUT = 3000;
 
+    public CreateRouter(ActorRef r) {
+        this.router = r;
+    }
+
     public Route createRoute() {
         return concat(
                 get(() ->
