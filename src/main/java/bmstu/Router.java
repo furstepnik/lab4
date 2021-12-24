@@ -15,7 +15,7 @@ public class Router {
 
     public Router(ActorSystem system) {
         actor = system.actorOf(Props.create(Store.class));
-        pool = system.actorOf(new RoundRobinPool(WORK_NUMBER).props(Props.create(TesterActor.class, storeActor)));
+        pool = system.actorOf(new RoundRobinPool(WORK_NUMBER).props(Props.create(Tester.class, storeActor)));
     }
 
     private void runTests(TestMessage test) {
