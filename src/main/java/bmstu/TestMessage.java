@@ -1,2 +1,4 @@
-package bmstu;public class TestMessage {
+package bmstu;
+
+public class TestMessage {
 }
