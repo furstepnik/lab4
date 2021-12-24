@@ -7,7 +7,7 @@ import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RoundRobinPool;
 
-public class Router {
+public class Router extends AbstractActor {
     private final ActorRef actor;
     private final ActorRef pool;
 
@@ -26,7 +26,7 @@ public class Router {
     }
 
     @Override
-    public Receive createRecieve() {
+    public Receive createReceive() {
         return ReceiveBuilder
                 .create()
                 .match(TestMessage.class, msg -> runTests(msg))
