@@ -7,7 +7,6 @@ import akka.japi.pf.ReceiveBuilder;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import javax.script.ScriptException;
 import javax.script.Invocable;
 
 public class Tester extends AbstractActor {
@@ -38,6 +37,8 @@ public class Tester extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder
-                
+                .create()
+                .match(Test.class, msg -> storeActor.tell(checkResult(msg), ActorRef.noSender()))
+                .build();
     }
 }

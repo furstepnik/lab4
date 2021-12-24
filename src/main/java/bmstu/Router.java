@@ -20,7 +20,7 @@ public class Router {
 
     private void runTests(TestMessage test) {
         for (Test t : test.getTests()) {
-            t.setParentTest(test);
+            t.setTest(test);
             pool.tell(t, ActorRef.noSender());
         }
     }
