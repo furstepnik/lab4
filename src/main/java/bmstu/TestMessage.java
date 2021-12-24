@@ -37,6 +37,10 @@ public class TestMessage implements Serializable{
         return this.script;
     }
 
+    public String getNameFunction() {
+        return this.nameFunction;
+    }
+
     
 
 
