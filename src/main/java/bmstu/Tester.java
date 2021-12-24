@@ -18,6 +18,6 @@ public class Tester extends AbstractActor {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName(JS);
         TestMessage parent = test.getTest();
         engine.eval(parent.getScript());
-        
+        Invocable invoc = (Invocable) engine;
     }
 }
