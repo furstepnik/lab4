@@ -10,7 +10,9 @@ public class Store {
         if (this.store.containsKey(pId)) {
             this.store.get(pId).add(test);
         } else {
-            
+            ArrayList<Test> arrayTests = new ArrayList<>();
+            arrayTests.add(test);
+            this.store.put(pId, arrayTests);
         }
     }
 }
