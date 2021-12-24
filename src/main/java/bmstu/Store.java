@@ -10,7 +10,7 @@ public class Store extends AbstractActor{
 
     private Map<String, ArrayList<Test>> store = new HashMap<>();
     private static final String FAIL = "FAIL";
-    private static final Strinc SUCCESS = "SUCCESS";
+    private static final String SUCCESS = "SUCCESS";
     private void putTest(Test test) {
         String testId = test.getTest().getPackageId();
         if (this.store.containsKey(testId)) {
@@ -27,7 +27,7 @@ public class Store extends AbstractActor{
         if (this.store.containsKey(testId)) {
             for (Test test : this.store.get(testId)) {
                 if (test.getActualResult().equals(test.getExpectedResult())) {
-                    mapTestResult.put(test.getTestName(), SUCCESS);
+                    mapTestsResult.put(test.getTestName(), SUCCESS);
                 } else {
                     mapTestsResult.put(test.getTestName(), FAIL);
                 }
@@ -42,6 +42,6 @@ public class Store extends AbstractActor{
                 .create()
                 .match(Test.class, t -> putTest(t))
                 .match(String.class, id -> sender().tell(prepareRes(id), self()))
-                
+                .build();
     }
 }
