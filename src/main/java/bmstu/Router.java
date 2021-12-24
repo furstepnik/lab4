@@ -15,7 +15,7 @@ public class Router extends AbstractActor {
 
     public Router(ActorSystem system) {
         actor = system.actorOf(Props.create(Store.class));
-        pool = system.actorOf(new RoundRobinPool(WORK_NUMBER).props(Props.create(Tester.class, storeActor)));
+        pool = system.actorOf(new RoundRobinPool(WORK_NUMBER).props(Props.create(Tester.class, actor)));
     }
 
     private void runTests(TestMessage test) {
@@ -30,7 +30,7 @@ public class Router extends AbstractActor {
         return ReceiveBuilder
                 .create()
                 .match(TestMessage.class, msg -> runTests(msg))
-                .match(String.class, msg -> actor.forward(msg, getContex()))
+                .match(String.class, msg -> actor.forward(msg, getContext()))
                 .build();
     }
 }
