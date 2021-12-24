@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Store {
+public class Store extends AbstractActor{
 
     private Map<String, ArrayList<Test>> store = new HashMap<>();
     private static final String FAIL = "FAIL";
@@ -29,8 +29,18 @@ public class Store {
                 if (test.getActualResult().equals(test.getExpectedResult())) {
                     mapTestResult.put(test.getTestName(), SUCCESS);
                 } else {
-                    
+                    mapTestsResult.put(test.getTestName(), FAIL);
                 }
+            }
         }
+        return mapTestsResult;
+    }
+
+    @Override
+    public Receive createReceive() {
+        return ReceiveBuilder
+                .create()
+                .match(Test.class, t -> putTest(t))
+                
     }
 }
