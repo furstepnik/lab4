@@ -1,6 +1,7 @@
 package bmstu;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TestMessage {
     private String packageId;
@@ -15,6 +16,16 @@ public class TestMessage {
 
     @JsonCreator
     public TestMessage(
-            
-    )
+            @JsonProperty(PACKAGE_ID) String pId,
+            @JsonProperty(SCRIPT) String sc,
+            @JsonProperty(FUNCTION_NAME) String fn,
+            @JsonProperty(TESTS) List<Test> t
+    ) {
+        this.packageId = pId;
+        this.nameFunction = fn;
+        this.tests = t;
+        this.script = sc;
+    }
+
+    
 }
